@@ -1,0 +1,30 @@
+# Ignore everything
+*
+
+# But don't ignore the Git ignore file
+!.gitignore
+
+# Allow wp-content
+!wp-content/
+wp-content/*
+
+# Allow themes folder
+!wp-content/themes/
+wp-content/themes/*
+
+# Allow your specific theme folder (change this!)
+!wp-content/themes/airbnb-theme/
+
+# Allow everything inside your theme
+!wp-content/themes/airbnb-theme/**
+
+# Still ignore other folders inside wp-content
+wp-content/plugins/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# Ignore environment/OS/editor junk
+*.log
+.DS_Store
+.env
