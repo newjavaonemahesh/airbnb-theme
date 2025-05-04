@@ -1,10 +1,6 @@
 # Ignore everything
 *
 
-# Ignore node_modeles
-#node_modules/
-wp-content/themes/airbnb-theme/node_modules/
-
 # But don't ignore the Git ignore file
 !.gitignore
 
@@ -21,6 +17,9 @@ wp-content/themes/*
 
 # Allow everything inside your theme
 !wp-content/themes/airbnb-theme/**
+
+# Ignore node_modeles
+node_modules/
 
 # Still ignore other folders inside wp-content
 wp-content/plugins/
