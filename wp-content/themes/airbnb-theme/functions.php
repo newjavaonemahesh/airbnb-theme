@@ -149,6 +149,22 @@ function airbnb_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'airbnb_theme_scripts' );
 
+function theme_enqueue_styles() {
+    // Enqueue the parent theme stylesheet (if using a child theme)
+    // Replace 'your-theme' with your parent theme’s slug if using a child theme.
+    wp_enqueue_style( 'airbnb-theme', get_template_directory_uri() . '/style.css' );
+    
+    // Enqueue your custom stylesheet
+    wp_enqueue_style(
+        'custom-style', // Handle for the custom style
+        get_stylesheet_directory_uri() . '/style.css', // Path to the custom style file
+        array( 'airbnb-theme' ), // Dependency on the parent theme style (if needed)
+        null, // Version (set to 'null' or use a version number)
+        'all' // Media type (optional, default is 'all')
+    );
+}
+add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+
 /**
  * Implement the Custom Header feature.
  */

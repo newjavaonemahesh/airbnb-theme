@@ -57,3 +57,40 @@
 			?>
 		</nav><!-- #site-navigation -->
 	</header><!-- #masthead -->
+
+
+		
+	<header id="masthead" class="airbnb-header">
+    <div class="container">
+        <!-- Logo (as custom header) -->
+		<?php
+        the_custom_logo();
+	    if ( is_front_page() && !is_home() ) : ?>	
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/homes">Homes</a></li>
+                <li><a href="/experiences">Experiences</a></li>
+            </ul>
+        </nav>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" placeholder="Where are you going?" />
+            <input type="date" placeholder="Check-in" />
+            <input type="date" placeholder="Check-out" />
+            <button type="submit">Search</button>
+        </div>
+
+        <!-- Airbnb Your Home -->
+        <div class="airbnb-your-home">
+            <a href="/host">Airbnb your home</a>
+        </div>
+
+        <!-- Profile Menu -->
+        <div class="profile-menu">
+            <button class="profile-icon">👤</button>
+        </div>
+		<?php endif; ?>
+    </div>
+</header>
