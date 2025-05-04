@@ -2,7 +2,8 @@
 *
 
 # Ignore node_modeles
-node_modules/
+#node_modules/
+wp-content/themes/airbnb-theme/node_modules/
 
 # But don't ignore the Git ignore file
 !.gitignore
