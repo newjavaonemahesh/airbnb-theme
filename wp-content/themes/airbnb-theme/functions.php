@@ -26,7 +26,7 @@ function airbnb_theme_setup() {
 		* If you're building a theme based on Airbnb Theme, use a find and replace
 		* to change 'airbnb-theme' to the name of your theme in all the template files.
 		*/
-	load_theme_textdomain( 'airbnb-theme', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'airbnb-theme', get_template_directory() . '/languages' );  
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -45,13 +45,6 @@ function airbnb_theme_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
-
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'airbnb-theme' ),
-		)
-	);
 
 	/*
 		* Switch default core markup for search form, comment form, and comments
@@ -99,6 +92,12 @@ function airbnb_theme_setup() {
 			'flex-height' => true,
 		)
 	);
+
+	register_nav_menus(
+		array(
+			'primary' => __( 'Primary Menu', 'airbnb-theme' ),
+		)
+	);
 }
 add_action( 'after_setup_theme', 'airbnb_theme_setup' );
 
@@ -142,11 +141,14 @@ function airbnb_theme_scripts() {
 	wp_style_add_data( 'airbnb-theme-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'airbnb-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+	// ✅ Add your main.js here
+	wp_enqueue_script('airbnb-theme-js', get_template_directory_uri() . '/js/main.js', array('jquery'), null, true);
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
+
 add_action( 'wp_enqueue_scripts', 'airbnb_theme_scripts' );
 
 function theme_enqueue_styles() {

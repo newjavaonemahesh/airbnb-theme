@@ -1,0 +1,5 @@
+@use "abstracts/variables/colors" as *;
+
+.test {
+  background: $color__background-pre;
+}

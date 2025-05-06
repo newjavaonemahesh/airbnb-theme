@@ -11,3 +11,11 @@
  */
 
 get_header(); ?>
+
+<!-- Your custom front page content here -->
+<main>
+  <h1>Welcome to Airbnb Clone</h1>
+  <!-- Add more content as needed -->
+</main>
+
+<?php get_footer(); ?>

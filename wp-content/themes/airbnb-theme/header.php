@@ -24,73 +24,79 @@
 <?php wp_body_open(); ?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'airbnb-theme' ); ?></a>
-
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	<header class="site-header">
+    <div class="container nav-container">
+        <div class="flex-wrapper">
+            <!-- Logo -->
+            <div class="site-logo">
+                <?php the_custom_logo(); ?>
+            </div>
+			<!-- Navigation -->
+			<nav class="main-nav">
 				<?php
-			else :
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'menu_class'     => 'primary-menu',
+						'container'      => false,
+					)
+				);
 				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$airbnb_theme_description = get_bloginfo( 'description', 'display' );
-			if ( $airbnb_theme_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $airbnb_theme_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'airbnb-theme' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+			<!-- Dropdown Menu (Hidden by default) -->
+			<div id="experiences-dropdown" class="experiences-dropdown hidden">
+				<ul>
+					<li><a href="#">Experience 1</a></li>
+					<li><a href="#">Experience 2</a></li>
+					<li><a href="#">Experience 3</a></li>
+				</ul>
+			</div>
 
+			</nav>
 
-		
-	<header id="masthead" class="airbnb-header">
-    <div class="container">
-        <!-- Logo (as custom header) -->
-		<?php
-        the_custom_logo();
-	    if ( is_front_page() && !is_home() ) : ?>	
-        <!-- Navigation -->
-        <nav class="main-nav">
-            <ul>
-                <li><a href="/homes">Homes</a></li>
-                <li><a href="/experiences">Experiences</a></li>
-            </ul>
-        </nav>
+			<!-- Airbnb-Style Search Box -->
+			<div class="search-box" role="search" aria-label="Search homes">
+			<ul class="search-box__list">
+				<li class="search-box__item search-box__item--location">
+				<span class="search-box__label">Where</span>
+				<input type="text" placeholder="Search destinations" class="search-box__input" />
+				</li>
+				<li class="search-box__divider"></li>
+				<li class="search-box__item search-box__item--checkin">
+				<span class="search-box__label">Check in</span>
+				<input type="date" class="search-box__input" />
+				</li>
+				<li class="search-box__divider"></li>
+				<li class="search-box__item search-box__item--checkout">
+				<span class="search-box__label">Check out</span>
+				<input type="date" class="search-box__input" />
+				</li>
+				<li class="search-box__divider"></li>
+				<li class="search-box__item search-box__item--guests">
+				<span class="search-box__label">Who</span>
+				<input type="text" placeholder="Add guests" class="search-box__input" />
+				</li>
+				<li class="search-box__item search-box__item--search">
+				<button type="submit" class="search-box__button" aria-label="Search">
+					<!-- SVG Search Icon -->
+					<svg xmlns="http://www.w3.org/2000/svg" class="search-box__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="11" cy="11" r="8" />
+					<line x1="21" y1="21" x2="16.65" y2="16.65" />
+					</svg>
+				</button>
+				</li>
+			</ul>
+			</div>
 
-        <!-- Search Box -->
-        <div class="search-box">
-            <input type="text" placeholder="Where are you going?" />
-            <input type="date" placeholder="Check-in" />
-            <input type="date" placeholder="Check-out" />
-            <button type="submit">Search</button>
+			<!-- Airbnb Your Home -->
+			<div class="airbnb-your-home">
+				<a href="/host">Airbnb your home</a>
+			</div>
+
+			<!-- Profile Menu -->
+			<div class="profile-menu">
+				<button class="profile-icon">👤</button>
+			</div>
         </div>
-
-        <!-- Airbnb Your Home -->
-        <div class="airbnb-your-home">
-            <a href="/host">Airbnb your home</a>
-        </div>
-
-        <!-- Profile Menu -->
-        <div class="profile-menu">
-            <button class="profile-icon">👤</button>
-        </div>
-		<?php endif; ?>
     </div>
 </header>
